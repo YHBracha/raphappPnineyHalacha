@@ -24,8 +24,8 @@
 //public class SearchableActivity extends Activity
 //{
 //	public Util util;
-//	String[][] chaptersFiles = new String[Util.BOOKS_NUMBER][31];
-//	String[][] chaptersNames = new String[Util.BOOKS_NUMBER][31];
+//	String[][] chaptersFiles = new String[Util.BOOKS_NUMBER][Util.MAX_SEIF];
+//	String[][] chaptersNames = new String[Util.BOOKS_NUMBER][Util.MAX_SEIF];
 //	public List<String> listBookLocation = new ArrayList<String>();
 //	public List<String> listStrAnchor = new ArrayList<String>();
 //	public ListView searchListView = null;

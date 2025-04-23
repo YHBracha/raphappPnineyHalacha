@@ -31,8 +31,6 @@ public class MediaPlayerService extends Service implements MediaPlayer.OnComplet
         MediaPlayer.OnPreparedListener, MediaPlayer.OnErrorListener, MediaPlayer.OnSeekCompleteListener,
         MediaPlayer.OnInfoListener, MediaPlayer.OnBufferingUpdateListener, AudioManager.OnAudioFocusChangeListener {
 
-    /*							0	1	2	3	4	5	6	7	8	9  10  11  12  13  14  15  16  17  18 19  20  21  22  23  24  25  26  27  28  29 30  31*/
-//    public int[] lastChapter = {18, 9, 10, 17, 10, 10, 19, 19, 13, 16, 13, 10, 8, 16, 11, 30, 10, 26, 24, 17, 10, 12, 8, 30, 10, 26, 16, 15, 24, 30, 26, 30};
     public Util util;
     private static MediaPlayer mediaPlayer;
     private String mediaUrl;
@@ -70,28 +68,7 @@ public class MediaPlayerService extends Service implements MediaPlayer.OnComplet
     private Handler durationHandler = new Handler();
     Intent serviceIntent;
     boolean wasPlaying = false;
-
     public static final String Broadcast_SERVICE_SKIP_NEXT = "com.rafraph.pnineyHalachaHashalem.ServiceSkipNext";
-
-//    private static final int BRACHOT      	= 0;
-//    private static final int GIYUR      	= 1;
-//    private static final int HAAMVEHAAREZ 	= 2;
-//    private static final int ZMANIM    		= 3;
-//    private static final int TAHARAT   		= 4;
-//    private static final int YAMIM    		= 5;
-//    private static final int KASHRUT_A 		= 6;
-//    private static final int KASHRUT_B 		= 7;
-//    private static final int LIKUTIM_A 		= 8;
-//    private static final int LIKUTIM_B 		= 9;
-//    private static final int MOADIM    		= 10;
-//    private static final int MISHPACHA   	= 11;
-//    private static final int SUCOT			= 12;
-//    private static final int PESACH			= 13;
-//    private static final int SHVIIT			= 14;
-//    private static final int SHABAT			= 15;
-//    private static final int SIMCHAT		= 16;
-//    private static final int TEFILA			= 17;
-//    private static final int TEFILAT_NASHIM	= 18;
     private float audioSpeed;
     public static boolean alreadySkipOnceFlag = false;
 
@@ -392,33 +369,64 @@ public class MediaPlayerService extends Service implements MediaPlayer.OnComplet
     private void registerAllBroadcast() {
         //register after getting audio focus
         IntentFilter intentFilter = new IntentFilter(MyAudio.Broadcast_SKIP_NEXT);
-        registerReceiver(BR_skipToNext, intentFilter);
-        intentFilter = new IntentFilter(MyAudio.Broadcast_SKIP_PREVIOUS);
-        registerReceiver(BR_skipToPrevious, intentFilter);
-        intentFilter = new IntentFilter(MyAudio.Broadcast_SKIP_TO_SPECIFIC_SECTION);
-        registerReceiver(BR_skipToSpecificSection, intentFilter);
-        intentFilter = new IntentFilter(MyAudio.Broadcast_START);
-        registerReceiver(BR_start, intentFilter);
-        intentFilter = new IntentFilter(MyAudio.Broadcast_PLAY_PAUSE);
-        registerReceiver(BR_playPause, intentFilter);
-        intentFilter = new IntentFilter(MyAudio.Broadcast_FORWARD_10);
-        registerReceiver(BR_forward_10_sec, intentFilter);
-        intentFilter = new IntentFilter(MyAudio.Broadcast_BACKWARD_10);
-        registerReceiver(BR_backward_10_sec, intentFilter);
-        intentFilter = new IntentFilter(MyAudio.Broadcast_OnTouch);
-        registerReceiver(BR_on_Touch, intentFilter);
-        intentFilter = new IntentFilter(MyAudio.Broadcast_SPEED_2_0);
-        registerReceiver(BR_speed_2_0, intentFilter);
-        intentFilter = new IntentFilter(MyAudio.Broadcast_SPEED_1_8);
-        registerReceiver(BR_speed_1_8, intentFilter);
-        intentFilter = new IntentFilter(MyAudio.Broadcast_SPEED_1_5);
-        registerReceiver(BR_speed_1_5, intentFilter);
-        intentFilter = new IntentFilter(MyAudio.Broadcast_SPEED_1_2);
-        registerReceiver(BR_speed_1_2, intentFilter);
-        intentFilter = new IntentFilter(MyAudio.Broadcast_SPEED_1_0);
-        registerReceiver(BR_speed_1_0, intentFilter);
-        intentFilter = new IntentFilter(MyAudio.Broadcast_SPEED_0_8);
-        registerReceiver(BR_speed_0_8, intentFilter);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            registerReceiver(BR_skipToNext, intentFilter, RECEIVER_EXPORTED);
+            intentFilter = new IntentFilter(MyAudio.Broadcast_SKIP_PREVIOUS);
+            registerReceiver(BR_skipToPrevious, intentFilter, RECEIVER_EXPORTED);
+            intentFilter = new IntentFilter(MyAudio.Broadcast_SKIP_TO_SPECIFIC_SECTION);
+            registerReceiver(BR_skipToSpecificSection, intentFilter, RECEIVER_EXPORTED);
+            intentFilter = new IntentFilter(MyAudio.Broadcast_START);
+            registerReceiver(BR_start, intentFilter, RECEIVER_EXPORTED);
+            intentFilter = new IntentFilter(MyAudio.Broadcast_PLAY_PAUSE);
+            registerReceiver(BR_playPause, intentFilter, RECEIVER_EXPORTED);
+            intentFilter = new IntentFilter(MyAudio.Broadcast_FORWARD_10);
+            registerReceiver(BR_forward_10_sec, intentFilter, RECEIVER_EXPORTED);
+            intentFilter = new IntentFilter(MyAudio.Broadcast_BACKWARD_10);
+            registerReceiver(BR_backward_10_sec, intentFilter, RECEIVER_EXPORTED);
+            intentFilter = new IntentFilter(MyAudio.Broadcast_OnTouch);
+            registerReceiver(BR_on_Touch, intentFilter, RECEIVER_EXPORTED);
+            intentFilter = new IntentFilter(MyAudio.Broadcast_SPEED_2_0);
+            registerReceiver(BR_speed_2_0, intentFilter, RECEIVER_EXPORTED);
+            intentFilter = new IntentFilter(MyAudio.Broadcast_SPEED_1_8);
+            registerReceiver(BR_speed_1_8, intentFilter, RECEIVER_EXPORTED);
+            intentFilter = new IntentFilter(MyAudio.Broadcast_SPEED_1_5);
+            registerReceiver(BR_speed_1_5, intentFilter, RECEIVER_EXPORTED);
+            intentFilter = new IntentFilter(MyAudio.Broadcast_SPEED_1_2);
+            registerReceiver(BR_speed_1_2, intentFilter, RECEIVER_EXPORTED);
+            intentFilter = new IntentFilter(MyAudio.Broadcast_SPEED_1_0);
+            registerReceiver(BR_speed_1_0, intentFilter, RECEIVER_EXPORTED);
+            intentFilter = new IntentFilter(MyAudio.Broadcast_SPEED_0_8);
+            registerReceiver(BR_speed_0_8, intentFilter, RECEIVER_EXPORTED);
+        } else {
+            registerReceiver(BR_skipToNext, intentFilter);
+            intentFilter = new IntentFilter(MyAudio.Broadcast_SKIP_PREVIOUS);
+            registerReceiver(BR_skipToPrevious, intentFilter);
+            intentFilter = new IntentFilter(MyAudio.Broadcast_SKIP_TO_SPECIFIC_SECTION);
+            registerReceiver(BR_skipToSpecificSection, intentFilter);
+            intentFilter = new IntentFilter(MyAudio.Broadcast_START);
+            registerReceiver(BR_start, intentFilter);
+            intentFilter = new IntentFilter(MyAudio.Broadcast_PLAY_PAUSE);
+            registerReceiver(BR_playPause, intentFilter);
+            intentFilter = new IntentFilter(MyAudio.Broadcast_FORWARD_10);
+            registerReceiver(BR_forward_10_sec, intentFilter);
+            intentFilter = new IntentFilter(MyAudio.Broadcast_BACKWARD_10);
+            registerReceiver(BR_backward_10_sec, intentFilter);
+            intentFilter = new IntentFilter(MyAudio.Broadcast_OnTouch);
+            registerReceiver(BR_on_Touch, intentFilter);
+            intentFilter = new IntentFilter(MyAudio.Broadcast_SPEED_2_0);
+            registerReceiver(BR_speed_2_0, intentFilter);
+            intentFilter = new IntentFilter(MyAudio.Broadcast_SPEED_1_8);
+            registerReceiver(BR_speed_1_8, intentFilter);
+            intentFilter = new IntentFilter(MyAudio.Broadcast_SPEED_1_5);
+            registerReceiver(BR_speed_1_5, intentFilter);
+            intentFilter = new IntentFilter(MyAudio.Broadcast_SPEED_1_2);
+            registerReceiver(BR_speed_1_2, intentFilter);
+            intentFilter = new IntentFilter(MyAudio.Broadcast_SPEED_1_0);
+            registerReceiver(BR_speed_1_0, intentFilter);
+            intentFilter = new IntentFilter(MyAudio.Broadcast_SPEED_0_8);
+            registerReceiver(BR_speed_0_8, intentFilter);
+        }
+
     }
 
     private BroadcastReceiver BR_forward_10_sec = new BroadcastReceiver() {

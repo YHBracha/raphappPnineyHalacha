@@ -64,7 +64,8 @@ public class TextMain extends AppCompatActivity implements View.OnClickListener/
 	String stHeadersArr;
 	Elements headers;
     String fileName, fileNameOnly, lastFileName = null;
-	String[][] chaptersFiles = new String[Util.BOOKS_NUMBER][31];
+
+	String[][] chaptersFiles = new String[Util.BOOKS_NUMBER][Util.MAX_SEIF];
 	private LinearLayout lnrOptions, lnrFindOptions;
 	public static final String PREFS_NAME = "MyPrefsFile";
 	static SharedPreferences mPrefs;

@@ -61,6 +61,7 @@ public class Util {
     static final int F_TEFILA       = 31;
     static final int S_SHABAT       = 32;
     static final int BOOKS_NUMBER	= 33;
+    static final int MAX_SEIF	= 31;
     public static final String PREFS_NAME = "MyPrefsFile";
     static SharedPreferences mPrefs;
     SharedPreferences.Editor shPrefEditor;
