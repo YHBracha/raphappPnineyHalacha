@@ -1,0 +1,28 @@
+[versions]
+appcompat = "1.7.1"
+commons-net = "3.13.0"
+constraintlayout = "2.2.1"
+gradle = "9.2.1"
+gradle-toolchains-foojay-resolver-convention = "1.0.0"
+gson = "2.14.0"
+legacy-support-v4 = "1.0.0"
+material = "1.14.0"
+media = "1.8.0"
+navigation = "2.9.8"
+recyclerview = "1.4.0"
+
+[libraries]
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+androidx-legacy-support-v4 = { group = "androidx.legacy", name = "legacy-support-v4", version.ref = "legacy-support-v4" }
+androidx-media = { group = "androidx.media", name = "media", version.ref = "media" }
+androidx-navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment", version.ref = "navigation" }
+androidx-navigation-ui = { group = "androidx.navigation", name = "navigation-ui", version.ref = "navigation" }
+androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
+commons-net = { group = "commons-net", name = "commons-net", version.ref = "commons-net" }
+gradle = { group = "com.android.tools.build", name = "gradle", version.ref = "gradle" }
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+[plugins]
+gradle-toolchains-foojay-resolver-convention = { id = "org.gradle.toolchains.foojay-resolver-convention", version.ref = "gradle-toolchains-foojay-resolver-convention" }
